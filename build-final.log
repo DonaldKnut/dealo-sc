@@ -1,0 +1,22 @@
+
+> dealo-job-platform@2.0.0 build
+> next build
+
+  ▲ Next.js 14.2.5
+  - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./components/FreelanceComponents/MobileAdvert/MobileAdvert.tsx:18:29
+Type error: Property 'dealoLogoIcon' does not exist on type '{ checkLogo: StaticImageData; badass: StaticImageData; userLogo: StaticImageData; cash: StaticImageData; mainImage: StaticImageData; AdvertImage: StaticImageData; categoryImages: { ...; }; }'.
+
+[0m [90m 16 |[39m             [33m<[39m[33mReveal[39m[33m>[39m[0m
+[0m [90m 17 |[39m               [33m<[39m[33mImage[39m[0m
+[0m[31m[1m>[22m[39m[90m 18 |[39m                 src[33m=[39m{images[33m.[39mdealoLogoIcon}[0m
+[0m [90m    |[39m                             [31m[1m^[22m[39m[0m
+[0m [90m 19 |[39m                 alt[33m=[39m[32m"Dealo on mobile device"[39m[0m
+[0m [90m 20 |[39m                 className[33m=[39m[32m"mobile-img"[39m[0m
+[0m [90m 21 |[39m               [33m/[39m[33m>[39m[0m

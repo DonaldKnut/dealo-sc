@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Scratch Cards Are Ready!</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #ecfdf5;
+        margin: 0;
+        padding: 0;
+        color: #1e3a2d;
+        text-align: center;
+      }
+      .container {
+        max-width: 600px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        margin: 40px auto;
+        overflow: hidden;
+      }
+      .header {
+        background-color: #047857;
+        padding: 24px;
+        text-align: center;
+      }
+      .header img {
+        max-width: 140px;
+      }
+      .content {
+        padding: 30px;
+        text-align: left;
+      }
+      h2 {
+        color: #065f46;
+        font-size: 24px;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      p {
+        color: #064e3b;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      .card-container {
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .card-item {
+        background: white;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 16px;
+        margin: 12px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .card-number {
+        font-weight: bold;
+        color: #047857;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+      .card-detail {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 0;
+        padding: 4px 0;
+        border-bottom: 1px solid #f1f5f9;
+      }
+      .card-label {
+        font-weight: 600;
+        color: #374151;
+      }
+      .card-value {
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        color: #047857;
+        background: #f0fdf4;
+        padding: 2px 8px;
+        border-radius: 4px;
+        letter-spacing: 1px;
+      }
+      .instructions {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+        padding: 16px;
+        margin: 20px 0;
+        border-radius: 0 6px 6px 0;
+      }
+      .instructions h3 {
+        color: #92400e;
+        margin-top: 0;
+        font-size: 18px;
+      }
+      .instructions ol {
+        color: #78350f;
+        margin: 12px 0;
+        padding-left: 20px;
+      }
+      .instructions li {
+        margin: 8px 0;
+        line-height: 1.5;
+      }
+      .button {
+        display: inline-block;
+        background-color: #22c55e;
+        color: white;
+        padding: 14px 32px;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin: 20px 10px;
+        transition: background-color 0.3s ease;
+      }
+      .button:hover {
+        background-color: #16a34a;
+      }
+      .footer {
+        background-color: #f8fafc;
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+      }
+      .footer p {
+        margin: 8px 0;
+        font-size: 14px;
+        color: #64748b;
+      }
+      .social-links {
+        margin-top: 16px;
+      }
+      .social-links a {
+        display: inline-block;
+        margin: 0 8px;
+        color: #047857;
+        text-decoration: none;
+      }
+      .warning {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 6px;
+        padding: 12px;
+        margin: 16px 0;
+        color: #991b1b;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://pub-734ce1bac5434727ba9692dacb3d7441.r2.dev/logos/dealo-new.png"
+          alt="Dealo Logo"
+        />
+        <h1 style="color: white; margin: 16px 0 0 0; font-size: 28px">
+          Scratch Cards Ready!
+        </h1>
+      </div>
+
+      <div class="content">
+        <h2>🎉 Your <%= examType %> Scratch Cards Are Here!</h2>
+
+        <p>Dear <strong><%= customerName %></strong>,</p>
+
+        <p>
+          Great news! Your <%= examType %> scratch card(s) have been
+          successfully purchased and are ready for use. Below are your card
+          details:
+        </p>
+
+        <div class="card-container">
+          <% cards.forEach((card, index) => { %>
+          <div class="card-item">
+            <div class="card-number">Card <%= index + 1 %></div>
+            <div class="card-detail">
+              <span class="card-label">PIN:</span>
+              <span class="card-value"><%= card.pin %></span>
+            </div>
+            <div class="card-detail">
+              <span class="card-label">Serial Number:</span>
+              <span class="card-value"><%= card.serial %></span>
+            </div>
+            <div class="card-detail">
+              <span class="card-label">Status:</span>
+              <span
+                class="card-value"
+                style="background: #dcfce7; color: #166534"
+                ><%= card.status %></span
+              >
+            </div>
+            <div class="card-detail">
+              <span class="card-label">Expires:</span>
+              <span
+                class="card-value"
+                style="background: #fef3c7; color: #92400e"
+                ><%= new Date(card.expiryDate).toLocaleDateString() %></span
+              >
+            </div>
+          </div>
+          <% }); %>
+        </div>
+
+        <div class="instructions">
+          <h3>📋 How to Use Your Scratch Cards</h3>
+          <ol>
+            <li>Visit the official <%= examType %> result checking website</li>
+            <li>Enter the PIN and Serial Number from your card above</li>
+            <li>Follow the prompts to check your result</li>
+            <li>Keep your card details safe for future reference</li>
+          </ol>
+        </div>
+
+        <div class="warning">
+          <strong>⚠️ Important:</strong> Please keep your PIN and Serial Number
+          confidential. Do not share these details with anyone.
+        </div>
+
+        <p style="text-align: center; margin-top: 24px">
+          <strong>Transaction Details:</strong><br />
+          Exam Type: <%= examType %><br />
+          Quantity: <%= cards.length %> card(s)<br />
+          Total Amount: ₦<%= totalAmount.toLocaleString() %><br />
+          Transaction ID: <%= transactionId %>
+        </p>
+
+        <div style="text-align: center; margin-top: 24px">
+          <a href="https://dealo.com/support" class="button">Need Help?</a>
+          <a href="https://dealo.com/dashboard" class="button"
+            >View Dashboard</a
+          >
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>Thank you for choosing Dealo!</p>
+        <p>If you have any questions, please contact our support team.</p>
+        <div class="social-links">
+          <a href="https://twitter.com/dealo">Twitter</a> |
+          <a href="https://facebook.com/dealo">Facebook</a> |
+          <a href="https://instagram.com/dealo">Instagram</a>
+        </div>
+        <p style="font-size: 12px; margin-top: 16px">
+          This email was sent to <%= customerEmail %>. If you didn't make this
+          purchase, please contact us immediately.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+

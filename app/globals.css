@@ -1,0 +1,573 @@
+/* Using system fonts as fallbacks */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Fonts - DM Sans is set by next/font on html via --font-dm-sans */
+    --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    --font-poppins: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    --font-playfair: "Playfair Display", Georgia, "Times New Roman", serif;
+
+    /* ============================================
+       MODULAR BRAND COLORS - Change here to update everywhere
+       ============================================ */
+
+    /* Primary Green (Your existing gradient) */
+    --brand-green: #70f69ae1;
+    --brand-green-light: #5dd885;
+    --brand-green-dark: #10b981;
+    --brand-green-darker: #059669;
+
+    /* Premium Orange */
+    --brand-orange: #ff6b35;
+    --brand-orange-light: #ff8c42;
+    --brand-orange-dark: #e85a2b;
+    --brand-orange-darker: #d4491f;
+
+    /* Luxury Gold */
+    --brand-gold: #ffd700;
+    --brand-gold-light: #ffe55c;
+    --brand-gold-dark: #ffc107;
+    --brand-gold-darker: #f59e0b;
+
+    /* Gradients - Change these to update all gradients */
+    --gradient-primary: linear-gradient(
+      135deg,
+      var(--brand-green) 0%,
+      var(--brand-green-light) 100%
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      var(--brand-orange) 0%,
+      var(--brand-gold) 100%
+    );
+    --gradient-premium: linear-gradient(
+      135deg,
+      var(--brand-green) 0%,
+      var(--brand-orange) 50%,
+      var(--brand-gold) 100%
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      var(--brand-green-light) 0%,
+      var(--brand-orange-light) 100%
+    );
+
+    /* Backgrounds (ensures white logo is always visible) */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #0f172a;
+    --bg-tertiary: #1e293b;
+    --bg-card: #334155;
+    --bg-hover: #475569;
+
+    /* Text colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    /* Borders */
+    --border-default: #334155;
+    --border-hover: var(--brand-green);
+  }
+
+  html {
+    font-family: var(--font-dm-sans), var(--font-inter);
+    background: linear-gradient(to bottom right, #000000, #0f1a0f, #000000);
+    min-height: 100vh;
+  }
+
+  body {
+    color: var(--text-primary);
+    background: linear-gradient(to bottom right, #000000, #0f1a0f, #000000);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .container-consistent {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ============================================
+     MODULAR GRADIENT CLASSES - Use these for consistency
+     ============================================ */
+
+  /* Primary Green Gradient (Your existing one - now modular) */
+  .gradient-green {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-green-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Orange-Gold Gradient (Premium secondary) */
+  .gradient-orange {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-orange-text {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Premium 3-Color Gradient */
+  .gradient-premium {
+    background: var(--gradient-premium);
+  }
+
+  .gradient-premium-text {
+    background: var(--gradient-premium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Accent Gradient */
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-accent-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Background Gradients */
+  .bg-gradient-dark {
+    background: linear-gradient(
+      135deg,
+      var(--bg-primary) 0%,
+      var(--bg-secondary) 100%
+    );
+  }
+
+  .bg-gradient-card {
+    background: linear-gradient(
+      135deg,
+      var(--bg-secondary) 0%,
+      var(--bg-tertiary) 100%
+    );
+  }
+
+  /* ============================================
+     MODULAR BUTTON STYLES
+     ============================================ */
+
+  /* Primary Button (Green) */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: var(--gradient-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(112, 246, 154, 0.3);
+  }
+
+  /* Secondary Button (Orange-Gold) */
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: var(--gradient-secondary);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(255, 107, 53, 0.3);
+  }
+
+  /* Premium Button (3-Color) */
+  .btn-premium {
+    @apply px-8 py-4 rounded-xl font-semibold transition-all duration-300;
+    background: var(--gradient-premium);
+    color: white;
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px -5px rgba(112, 246, 154, 0.4);
+  }
+
+  /* ============================================
+     MODULAR CARD STYLES
+     ============================================ */
+
+  /* Premium Card */
+  .card-premium {
+    @apply rounded-2xl p-6 transition-all duration-300;
+    background: var(--bg-card);
+    border: 1px solid var(--border-default);
+  }
+
+  .card-premium:hover {
+    border-color: var(--brand-green);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(112, 246, 154, 0.2);
+  }
+
+  /* Feature Card with Gradient Border */
+  .card-gradient {
+    @apply rounded-2xl p-6 transition-all duration-300;
+    background: var(--bg-secondary);
+    position: relative;
+  }
+
+  .card-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: var(--gradient-premium);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* ============================================
+     PREMIUM TEXT STYLES
+     ============================================ */
+
+  .text-gradient-green {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-orange {
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-premium {
+    background: var(--gradient-premium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* ============================================
+     CUSTOM SCROLLBAR STYLES
+     ============================================ */
+  
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--bg-card);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-green);
+  }
+  
+  /* Firefox */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-card) transparent;
+  }
+
+  /* Professional Font Classes */
+  .font-heading {
+    font-family: var(--font-playfair);
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  .font-ui {
+    font-family: var(--font-poppins);
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  .font-body {
+    font-family: var(--font-inter);
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  /* Typography Scale */
+  .text-hero {
+    @apply text-5xl md:text-7xl lg:text-8xl font-heading font-bold leading-tight;
+  }
+
+  .text-display {
+    @apply text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight;
+  }
+
+  .text-h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold leading-tight;
+  }
+
+  .text-h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-heading font-semibold leading-tight;
+  }
+
+  .text-h3 {
+    @apply text-xl md:text-2xl lg:text-3xl font-ui font-semibold leading-tight;
+  }
+
+  .text-h4 {
+    @apply text-lg md:text-xl lg:text-2xl font-ui font-medium leading-tight;
+  }
+
+  .text-body-large {
+    @apply text-lg md:text-xl font-body leading-relaxed;
+  }
+
+  .text-body {
+    @apply text-base md:text-lg font-body leading-relaxed;
+  }
+
+  .text-body-small {
+    @apply text-sm md:text-base font-body leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-xs md:text-sm font-body leading-relaxed;
+  }
+
+  /* Blog Prose Styles */
+  .prose {
+    @apply text-gray-300;
+  }
+
+  .prose h1 {
+    @apply text-3xl font-bold text-white mb-6 mt-8;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold text-white mb-4 mt-8;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold text-white mb-3 mt-6;
+  }
+
+  .prose h4 {
+    @apply text-lg font-semibold text-white mb-2 mt-4;
+  }
+
+  .prose p {
+    @apply text-gray-300 mb-4 leading-relaxed;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside mb-4 text-gray-300;
+  }
+
+  .prose ol {
+    @apply list-decimal list-inside mb-4 text-gray-300;
+  }
+
+  .prose li {
+    @apply mb-2;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-green-500 pl-4 italic text-gray-300 mb-4;
+  }
+
+  .prose code {
+    @apply bg-gray-800 text-green-400 px-2 py-1 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose a {
+    @apply text-green-400 hover:text-green-300 underline;
+  }
+
+  .prose strong {
+    @apply font-semibold text-white;
+  }
+
+  .prose em {
+    @apply italic text-gray-200;
+  }
+
+  .prose img {
+    @apply rounded-lg my-6;
+  }
+
+  .prose table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  .prose th {
+    @apply bg-gray-800 text-white font-semibold p-3 border border-gray-700;
+  }
+
+  .prose td {
+    @apply p-3 border border-gray-700 text-gray-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4ade80;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles - removed global focus outline to prevent unwanted green outlines */
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text utilities */
+.gradient-text {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button hover effects */
+.btn-hover {
+  transition: all 0.3s ease;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container-consistent {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-consistent {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container-consistent {
+    @apply px-8;
+  }
+}

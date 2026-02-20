@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+  NODE_OPTIONS = "--max-old-space-size=8192"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  node_bundler = "esbuild"
+  # The @netlify/plugin-nextjs will handle bundling automatically
+  # The previous included_files = [".next/**"] was causing the function to be too large
+  # Let the plugin handle what to include in the serverless function bundle
+
+# Next.js handles routing internally, so we don't need catch-all redirects

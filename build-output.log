@@ -1,0 +1,351 @@
+
+> dealo-job-platform@2.0.0 build
+> NODE_OPTIONS='--max-old-space-size=4096' next build
+
+  ▲ Next.js 14.2.5
+  - Environments: .env.local, .env
+  - Experiments (use with caution):
+    · turbo
+    · optimizeCss
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+(node:62785) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+   Generating static pages (0/173) ...
+[32mInlined 954 bytes (2% of original 37.55 kB) of _next/static/css/a4ea863cf77e07ef.css.[39m
+Time 632.640806
+[32mInlined 954 bytes (2% of original 37.55 kB) of _next/static/css/a4ea863cf77e07ef.css.[39m
+Time 551.234404
+(node:62784) NOTE: The AWS SDK for JavaScript (v2) is in maintenance mode.
+ SDK releases are limited to address critical bug fixes and security issues only.
+
+Please migrate your code to use AWS SDK for JavaScript (v3).
+For more information, check the blog post at https://a.co/cUPnyil
+(Use `node --trace-warnings ...` to show where the warning was created)
+   Generating static pages (43/173) 
+Job verification error: q [Error]: Dynamic server usage: Route /api/jobs/verify couldn't be rendered statically because it used `request.url`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at W (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:21106)
+    at Object.get (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:28459)
+    at p (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/.next/server/app/api/jobs/verify/route.js:1:844)
+    at /Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/next/dist/compiled/next-server/app-route.runtime.prod.js:6:36264
+    at /Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/next/dist/server/lib/trace/tracer.js:140:36
+    at NoopContextManager.with (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/@opentelemetry/api/build/src/context/NoopContextManager.js:25:19)
+    at ContextAPI.with (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/@opentelemetry/api/build/src/api/context.js:60:46)
+    at NoopTracer.startActiveSpan (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/@opentelemetry/api/build/src/trace/NoopTracer.js:65:31)
+    at ProxyTracer.startActiveSpan (/Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/@opentelemetry/api/build/src/trace/ProxyTracer.js:36:24)
+    at /Users/ibrahim/Desktop/dealo-new-platform/dealo-sc/node_modules/next/dist/server/lib/trace/tracer.js:122:103 {
+  description: "Route /api/jobs/verify couldn't be rendered statically because it used `request.url`. See more info here: https://nextjs.org/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+   Generating static pages (86/173) 
+   Generating static pages (129/173) 
+ ✓ Generating static pages (173/173)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                            Size     First Load JS
+┌ ○ /                                                                  21.7 kB        1.37 MB
+├ ○ /_not-found                                                        136 B          1.31 MB
+├ ○ /about                                                             1.34 kB        1.35 MB
+├ ○ /admin/bulk-hiring                                                 3.41 kB        1.35 MB
+├ ○ /admin/enterprises                                                 1.72 kB        1.31 MB
+├ ○ /africa                                                            136 B          1.31 MB
+├ ○ /api                                                               963 B          1.35 MB
+├ ƒ /api/admin/enterprises                                             0 B                0 B
+├ ƒ /api/ai-course-planner/generate                                    0 B                0 B
+├ ƒ /api/auth/[...nextauth]                                            0 B                0 B
+├ ƒ /api/auth/check-user                                               0 B                0 B
+├ ƒ /api/auth/signout                                                  0 B                0 B
+├ ƒ /api/bulk-hiring/payment                                           0 B                0 B
+├ ƒ /api/bulk-hiring/request                                           0 B                0 B
+├ ƒ /api/certifications/[field]/[level]                                0 B                0 B
+├ ƒ /api/certifications/analytics                                      0 B                0 B
+├ ƒ /api/certifications/complete                                       0 B                0 B
+├ ƒ /api/certifications/evaluate                                       0 B                0 B
+├ ƒ /api/certifications/generate-quiz                                  0 B                0 B
+├ ƒ /api/certifications/questions                                      0 B                0 B
+├ ƒ /api/certifications/start                                          0 B                0 B
+├ ƒ /api/certifications/user                                           0 B                0 B
+├ ƒ /api/chatbot                                                       0 B                0 B
+├ ○ /api/chats/users                                                   0 B                0 B
+├ ƒ /api/chats/users/[userId]                                          0 B                0 B
+├ ƒ /api/chats/users/[userId]/searchChat/[query]                       0 B                0 B
+├ ƒ /api/chats/users/[userId]/status                                   0 B                0 B
+├ ƒ /api/chats/users/[userId]/update                                   0 B                0 B
+├ ƒ /api/chats/users/searchContact/[query]                             0 B                0 B
+├ ƒ /api/check-access/[orgId]                                          0 B                0 B
+├ ƒ /api/checkout/resource                                             0 B                0 B
+├ ƒ /api/cleanup-unverified                                            0 B                0 B
+├ ƒ /api/companies                                                     0 B                0 B
+├ ƒ /api/complete-profile                                              0 B                0 B
+├ ƒ /api/confirm/[intentId]                                            0 B                0 B
+├ ƒ /api/contact                                                       0 B                0 B
+├ ƒ /api/conversations                                                 0 B                0 B
+├ ƒ /api/conversations/[conversationId]/messages                       0 B                0 B
+├ ƒ /api/courses                                                       0 B                0 B
+├ ƒ /api/courses/[id]                                                  0 B                0 B
+├ ƒ /api/courses/[id]/lessons                                          0 B                0 B
+├ ƒ /api/courses/[id]/publish                                          0 B                0 B
+├ ƒ /api/courses/[id]/sections/[sectionId]/lectures/[lectureId]/video  0 B                0 B
+├ ƒ /api/courses/generate-content                                      0 B                0 B
+├ ƒ /api/credits                                                       0 B                0 B
+├ ƒ /api/cron/cleanup-stale-payments                                   0 B                0 B
+├ ƒ /api/dashboard/courses                                             0 B                0 B
+├ ƒ /api/dashboard/courses/[id]                                        0 B                0 B
+├ ƒ /api/dashboard/jobs                                                0 B                0 B
+├ ƒ /api/dashboard/network                                             0 B                0 B
+├ ƒ /api/dashboard/overview                                            0 B                0 B
+├ ƒ /api/dealo-jobs                                                    0 B                0 B
+├ ƒ /api/dealojobs/[jobId]                                             0 B                0 B
+├ ƒ /api/dealojobs/latest                                              0 B                0 B
+├ ƒ /api/email/bulk-hiring/admin                                       0 B                0 B
+├ ƒ /api/email/bulk-hiring/client                                      0 B                0 B
+├ ƒ /api/email/health                                                  0 B                0 B
+├ ƒ /api/email/marketplace/new-order                                   0 B                0 B
+├ ƒ /api/email/send                                                    0 B                0 B
+├ ƒ /api/employment/advanced-search                                    0 B                0 B
+├ ƒ /api/employment/search                                             0 B                0 B
+├ ƒ /api/employment/stats                                              0 B                0 B
+├ ƒ /api/enterprise/invite                                             0 B                0 B
+├ ƒ /api/enterprise/me                                                 0 B                0 B
+├ ƒ /api/enterprise/register                                           0 B                0 B
+├ ƒ /api/enterprise/verify                                             0 B                0 B
+├ ƒ /api/fetch-company/[id]                                            0 B                0 B
+├ ƒ /api/fetch-details                                                 0 B                0 B
+├ ƒ /api/fetch-jobs-id/[jobId]                                         0 B                0 B
+├ ƒ /api/forge-courses/[id]                                            0 B                0 B
+├ ƒ /api/forgot-password                                               0 B                0 B
+├ ƒ /api/friend-request                                                0 B                0 B
+├ ƒ /api/generate-course                                               0 B                0 B
+├ ƒ /api/generate-course-insights                                      0 B                0 B
+├ ƒ /api/get-course                                                    0 B                0 B
+├ ƒ /api/get-user                                                      0 B                0 B
+├ ○ /api/health                                                        0 B                0 B
+├ ○ /api/health/live                                                   0 B                0 B
+├ ○ /api/health/ready                                                  0 B                0 B
+├ ƒ /api/images/upload-url                                             0 B                0 B
+├ ƒ /api/insights                                                      0 B                0 B
+├ ƒ /api/jobs                                                          0 B                0 B
+├ ƒ /api/jobs/alerts                                                   0 B                0 B
+├ ƒ /api/jobs/applications                                             0 B                0 B
+├ ƒ /api/jobs/apply                                                    0 B                0 B
+├ ƒ /api/jobs/check-alerts                                             0 B                0 B
+├ ƒ /api/jobs/external                                                 0 B                0 B
+├ ƒ /api/jobs/personalized                                             0 B                0 B
+├ ƒ /api/jobs/public                                                   0 B                0 B
+├ ƒ /api/jobs/quick-apply                                              0 B                0 B
+├ ƒ /api/jobs/save                                                     0 B                0 B
+├ ƒ /api/jobs/seed                                                     0 B                0 B
+├ ƒ /api/jobs/verify                                                   0 B                0 B
+├ ƒ /api/marketplace/payment                                           0 B                0 B
+├ ƒ /api/messages                                                      0 B                0 B
+├ ƒ /api/messages/realtime                                             0 B                0 B
+├ ƒ /api/mock-interview/evaluate                                       0 B                0 B
+├ ƒ /api/mock-interview/next-question                                  0 B                0 B
+├ ƒ /api/my-courses                                                    0 B                0 B
+├ ƒ /api/orders                                                        0 B                0 B
+├ ƒ /api/orders/[orderId]/dispute                                      0 B                0 B
+├ ƒ /api/orders/[orderId]/release                                      0 B                0 B
+├ ƒ /api/orders/[orderId]/resolve                                      0 B                0 B
+├ ƒ /api/orders/[orderId]/submit                                       0 B                0 B
+├ ƒ /api/posts/[id]/comments                                           0 B                0 B
+├ ƒ /api/posts/[id]/comments/[commentId]/like                          0 B                0 B
+├ ƒ /api/posts/[id]/comments/realtime                                  0 B                0 B
+├ ƒ /api/posts/[id]/like                                               0 B                0 B
+├ ƒ /api/professionals                                                 0 B                0 B
+├ ƒ /api/professionals/search                                          0 B                0 B
+├ ƒ /api/profiles/[handle]                                             0 B                0 B
+├ ƒ /api/profiles/follow                                               0 B                0 B
+├ ƒ /api/resend-verification                                           0 B                0 B
+├ ƒ /api/reset-password                                                0 B                0 B
+├ ƒ /api/resources                                                     0 B                0 B
+├ ƒ /api/resources/upload-url                                          0 B                0 B
+├ ƒ /api/resume/ai-prepopulate                                         0 B                0 B
+├ ƒ /api/resume/ai-tailor                                              0 B                0 B
+├ ƒ /api/resume/export                                                 0 B                0 B
+├ ƒ /api/resume/generate                                               0 B                0 B
+├ ƒ /api/resume/save                                                   0 B                0 B
+├ ƒ /api/resume/templates                                              0 B                0 B
+├ ƒ /api/save-chapters                                                 0 B                0 B
+├ ƒ /api/scratch-cards/prices                                          0 B                0 B
+├ ƒ /api/scratch-cards/purchase                                        0 B                0 B
+├ ƒ /api/scratch-cards/transactions                                    0 B                0 B
+├ ƒ /api/scratch-cards/transactions/[id]                               0 B                0 B
+├ ƒ /api/search                                                        0 B                0 B
+├ ƒ /api/signup                                                        0 B                0 B
+├ ƒ /api/stream-token                                                  0 B                0 B
+├ ƒ /api/stripe                                                        0 B                0 B
+├ ƒ /api/subscribe                                                     0 B                0 B
+├ ƒ /api/upload                                                        0 B                0 B
+├ ƒ /api/upload/media                                                  0 B                0 B
+├ ƒ /api/uploads/r2                                                    0 B                0 B
+├ ƒ /api/user/[id]/cart                                                0 B                0 B
+├ ƒ /api/user/[id]/shop                                                0 B                0 B
+├ ƒ /api/user/[id]/wishlist/[workId]                                   0 B                0 B
+├ ƒ /api/users/[id]/follow                                             0 B                0 B
+├ ƒ /api/users/roles                                                   0 B                0 B
+├ ƒ /api/users/suggested                                               0 B                0 B
+├ ƒ /api/verify-email                                                  0 B                0 B
+├ ƒ /api/video/upload-url                                              0 B                0 B
+├ ƒ /api/video/webhook                                                 0 B                0 B
+├ ƒ /api/videos/save-metadata                                          0 B                0 B
+├ ƒ /api/videos/upload-url                                             0 B                0 B
+├ ƒ /api/webhook                                                       0 B                0 B
+├ ƒ /api/webhooks/flutterwave                                          0 B                0 B
+├ ƒ /api/webhooks/paystack                                             0 B                0 B
+├ ƒ /api/wishlist                                                      0 B                0 B
+├ ƒ /api/wishlist/add                                                  0 B                0 B
+├ ƒ /api/wishlist/remove                                               0 B                0 B
+├ ƒ /api/work-user/[userId]/work                                       0 B                0 B
+├ ƒ /api/work/[id]                                                     0 B                0 B
+├ ƒ /api/work/all                                                      0 B                0 B
+├ ƒ /api/work/list/[category]                                          0 B                0 B
+├ ƒ /api/work/new                                                      0 B                0 B
+├ ƒ /api/work/search/[query]                                           0 B                0 B
+├ ○ /api/works/trending                                                0 B                0 B
+├ ƒ /api/writers/login                                                 0 B                0 B
+├ ƒ /api/writers/resend-verification                                   0 B                0 B
+├ ƒ /api/writers/signup                                                0 B                0 B
+├ ƒ /api/writers/verify-email                                          0 B                0 B
+├ ○ /blog                                                              2.82 kB        1.31 MB
+├ ƒ /blog/[id]                                                         1.6 kB         1.31 MB
+├ ○ /blog/career-tips                                                  751 B          1.35 MB
+├ ○ /blog/success-stories                                              748 B          1.35 MB
+├ ○ /blog/tech-insights                                                749 B          1.35 MB
+├ ○ /careers                                                           1.04 kB        1.35 MB
+├ ○ /certification                                                     1.88 kB        1.35 MB
+├ ƒ /certification/[field]/[level]                                     2.62 kB        1.35 MB
+├ ƒ /certification/[field]/[level]/assessment                          3.28 kB        1.35 MB
+├ ○ /certifications/explore                                            3.03 kB        1.35 MB
+├ ○ /certifications/my-certifications                                  2.69 kB        1.35 MB
+├ ○ /community                                                         1.06 kB        1.35 MB
+├ ○ /complete-profile                                                  5.43 kB        1.35 MB
+├ ○ /contact                                                           1.82 kB        1.31 MB
+├ ƒ /conversations                                                     505 B          1.31 MB
+├ ○ /courses                                                           2.29 kB        1.31 MB
+├ ƒ /courses/[slug]                                                    2.99 kB        1.31 MB
+├ ○ /dashboard                                                         524 B          1.31 MB
+├ ○ /dealoforge                                                        2.14 kB        1.35 MB
+├ ○ /dealoforge/create-course                                          7.17 kB        1.36 MB
+├ ƒ /dealoforge/create-course/[courseId]                               5.34 kB        1.35 MB
+├ ƒ /dealoforge/create-course/[courseId]/add-chapter                   2.25 kB        1.31 MB
+├ ƒ /dealoforge/create-course/[courseId]/add-video                     2.75 kB        1.31 MB
+├ ƒ /dealoforge/create-course/chapter/[courseId]                       7.33 kB        1.36 MB
+├ ○ /dealoforge/create-custom-course                                   3.74 kB        1.27 MB
+├ ○ /dealoforge/dashboard                                              30.8 kB        1.38 MB
+├ ƒ /dealoforge/dashboard/courses/[id]                                 3.68 kB        1.31 MB
+├ ○ /dealoforge/dashboard/create-course                                4.04 kB        1.31 MB
+├ ƒ /dealoforge/dashboard/drive/resumes                                2.24 kB        1.31 MB
+├ ○ /dealoforge/dashboard/explore                                      2.21 kB        1.31 MB
+├ ƒ /dealoforge/dashboard/logout                                       135 B          1.31 MB
+├ ○ /dealoforge/dashboard/metrics                                      1.12 kB        1.31 MB
+├ ○ /dealoforge/dashboard/upgrade                                      1.35 kB        1.31 MB
+├ ○ /docs                                                              2.46 kB        1.35 MB
+├ ○ /docs/api                                                          173 B          1.27 MB
+├ ○ /docs/auth                                                         136 B          1.31 MB
+├ ○ /docs/getting-started                                              136 B          1.31 MB
+├ ○ /docs/sdks                                                         135 B          1.31 MB
+├ ○ /docs/webhooks                                                     136 B          1.31 MB
+├ ○ /earn                                                              134 B          1.31 MB
+├ ○ /employment                                                        3.39 kB        1.35 MB
+├ ƒ /employment/[orgId]                                                920 B          1.31 MB
+├ ○ /employment/admin/seed                                             1.82 kB        1.27 MB
+├ ○ /employment/bulk-hiring                                            5.05 kB        1.31 MB
+├ ○ /employment/bulk-hiring/onboarding                                 4.42 kB        1.31 MB
+├ ○ /employment/bulk-hiring/payment/success                            1.89 kB        1.31 MB
+├ ƒ /employment/create-company                                         1.89 kB        1.31 MB
+├ ○ /employment/dealojobs                                              788 B          1.35 MB
+├ ƒ /employment/dealojobs/[jobId]                                      677 B          1.35 MB
+├ ƒ /employment/jobs/[orgId]                                           820 B          1.35 MB
+├ ƒ /employment/jobs/edit/[jobId]                                      775 B          1.31 MB
+├ ƒ /employment/new-company/[orgId]                                    635 B          1.31 MB
+├ ○ /employment/new-listing                                            7.19 kB        1.36 MB
+├ ○ /employment/search                                                 4.53 kB        1.35 MB
+├ ƒ /employment/show/[jobId]                                           6.12 kB        1.35 MB
+├ ○ /employment/verify-job                                             1.2 kB         1.31 MB
+├ ○ /explore                                                           2.32 kB        1.35 MB
+├ ○ /faq                                                               1.24 kB        1.35 MB
+├ ○ /features/ai-learning                                              1.28 kB        1.35 MB
+├ ○ /features/ai-tools                                                 1.14 kB        1.35 MB
+├ ○ /features/marketplace                                              1.18 kB        1.35 MB
+├ ○ /features/messaging                                                1.12 kB        1.35 MB
+├ ○ /features/network                                                  1.11 kB        1.35 MB
+├ ○ /features/scratch-cards                                            2.85 kB        1.35 MB
+├ ○ /features/travel-loans                                             2.15 kB        1.35 MB
+├ ○ /features/video-chat                                               2.38 kB        1.35 MB
+├ ○ /forgot-password                                                   2.37 kB        1.35 MB
+├ ○ /gigs                                                              2.71 kB        1.35 MB
+├ ƒ /gigs/[id]                                                         685 B          1.31 MB
+├ ○ /graphics                                                          766 B          1.35 MB
+├ ○ /help                                                              1.19 kB        1.35 MB
+├ ƒ /instructors/[id]                                                  2.99 kB        1.31 MB
+├ ○ /jobs                                                              4.78 kB        1.35 MB
+├ ○ /jobs/create                                                       3.61 kB        1.35 MB
+├ ○ /jobs/search                                                       5.08 kB        1.35 MB
+├ ○ /launch-page                                                       1.11 kB        1.27 MB
+├ ○ /learn                                                             135 B          1.31 MB
+├ ○ /marketplace                                                       16.2 kB        1.36 MB
+├ ○ /marketplace/create-work                                           815 B          1.31 MB
+├ ○ /marketplace/edit-work                                             936 B          1.31 MB
+├ ○ /marketplace/payment/success                                       891 B          1.31 MB
+├ ƒ /marketplace/product-details/[id]                                  6.85 kB        1.35 MB
+├ ○ /marketplace/shop                                                  3.02 kB        1.35 MB
+├ ƒ /meeting/[id]                                                      3.39 kB        1.31 MB
+├ ○ /messenger                                                         3.67 kB        1.35 MB
+├ ○ /mock-interview                                                    1.86 kB        1.35 MB
+├ ○ /onboarding                                                        2.44 kB        1.35 MB
+├ ○ /orders                                                            1.13 kB        1.27 MB
+├ ○ /packages                                                          1.44 kB        1.35 MB
+├ ○ /partners                                                          1.01 kB        1.35 MB
+├ ○ /press                                                             909 B          1.35 MB
+├ ○ /pricing                                                           1.92 kB        1.31 MB
+├ ○ /privacy                                                           135 B          1.31 MB
+├ ○ /profile                                                           2.95 kB        1.31 MB
+├ ƒ /research/hub                                                      136 B          1.31 MB
+├ ○ /robots.txt                                                        0 B                0 B
+├ ○ /scratch-cards                                                     5.61 kB        1.31 MB
+├ ƒ /search/[query]                                                    3.04 kB        1.31 MB
+├ ○ /search/freelance                                                  664 B          1.35 MB
+├ ○ /search/professionals                                              693 B          1.35 MB
+├ ○ /settings                                                          1.47 kB        1.35 MB
+├ ○ /sign-in                                                           4.81 kB        1.35 MB
+├ ○ /sign-out                                                          402 B          1.27 MB
+├ ○ /sitemap.xml                                                       0 B                0 B
+├ ○ /social/feed                                                       627 B          1.31 MB
+├ ○ /solutions/businesses                                              2.82 kB        1.31 MB
+├ ○ /solutions/individuals                                             2.24 kB        1.31 MB
+├ ○ /solutions/instructors                                             1.16 kB        1.35 MB
+├ ○ /status                                                            920 B          1.35 MB
+├ ○ /success                                                           1.19 kB        1.35 MB
+├ ○ /terms                                                             136 B          1.31 MB
+├ ○ /update-work                                                       1.18 kB        1.31 MB
+├ ƒ /users/[handle]                                                    2.58 kB        1.35 MB
+├ ƒ /verify-email-new                                                  4.17 kB        1.35 MB
+├ ○ /video-call                                                        3.76 kB        1.31 MB
+├ ○ /video-chat                                                        4.62 kB        1.35 MB
+├ ○ /video-chat/personal-room                                          1.48 kB        1.31 MB
+├ ƒ /video-chat/previous                                               135 B          1.31 MB
+├ ƒ /video-chat/recordings                                             135 B          1.31 MB
+├ ƒ /video-chat/upcoming                                               135 B          1.31 MB
+├ ○ /writers/create-blog                                               2.6 kB         1.31 MB
+├ ○ /writers/dashboard                                                 1.39 kB        1.31 MB
+├ ○ /writers/login                                                     2.65 kB        1.31 MB
+├ ○ /writers/signup                                                    3.26 kB        1.31 MB
+└ ƒ /writers/verify-email                                              1.77 kB        1.31 MB
++ First Load JS shared by all                                          1.27 MB
+  ├ chunks/vendor-74c9d66c4bcf7da4.js                                  1.26 MB
+  └ other shared chunks (total)                                        9.88 kB
+
+
+ƒ Middleware                                                           28 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

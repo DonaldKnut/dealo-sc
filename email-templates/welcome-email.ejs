@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Dealo Talent Network!</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #ecfdf5; /* Light green background */
+        margin: 0;
+        padding: 0;
+        color: #1e3a2d; /* Dark green text */
+        text-align: center;
+      }
+      .container {
+        max-width: 600px;
+        background: #ffffff; /* White container */
+        border-radius: 12px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        margin: 40px auto;
+        overflow: hidden;
+      }
+      .header {
+        background-color: #047857; /* Dark green */
+        padding: 24px;
+        text-align: center;
+      }
+      .header img {
+        max-width: 140px;
+      }
+      .banner {
+        width: 100%;
+        max-width: 500px; /* Set the max width to 500px */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px; /* Optional: Add border radius for rounded corners */
+      }
+
+      .content {
+        padding: 30px;
+        text-align: center;
+      }
+      h2 {
+        color: #065f46; /* Dark green heading */
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+      p {
+        color: #064e3b; /* Medium green text */
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .button {
+        display: block;
+        background-color: #22c55e; /* Bright green */
+        color: white;
+        padding: 14px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px auto;
+        max-width: 200px;
+        transition: background-color 0.3s ease;
+      }
+      .button:hover {
+        background-color: #16a34a; /* Darker green */
+      }
+      .gradient-button {
+        display: block;
+        background: linear-gradient(
+          135deg,
+          #16a34a,
+          #1e3a2d
+        ); /* Green to dark gray */
+        color: white;
+        padding: 14px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-align: center;
+        margin: 20px auto;
+        max-width: 250px;
+        transition: opacity 0.3s ease;
+      }
+      .gradient-button:hover {
+        opacity: 0.9;
+      }
+      .social-links {
+        margin-top: 24px;
+        text-align: center;
+      }
+      .social-links a {
+        display: inline-block;
+        margin: 0 10px;
+      }
+      .social-links img {
+        width: 28px;
+        height: 28px;
+      }
+      .footer {
+        background-color: #f0fdf4; /* Light green footer */
+        padding: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #64748b; /* Gray text */
+      }
+      .footer a {
+        color: #065f46; /* Dark green link */
+        text-decoration: none;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <img
+          src="https://pub-734ce1bac5434727ba9692dacb3d7441.r2.dev/logos/dealo-new.png"
+          alt="Dealo Logo"
+        />
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h2>Welcome to Dealo, <%= firstName %>! 🎉</h2>
+        <p>
+          We're thrilled to have you on board! Dealo is your gateway to exciting
+          opportunities, meaningful connections, and career growth.
+        </p>
+        <!-- Banner Image -->
+        <img
+          src="https://res.cloudinary.com/dajpllbyu/image/upload/v1739793704/x6lkqqpollatjrrvd5ub.png"
+          alt="Welcome to Dealo"
+          class="banner"
+        />
+        <p>
+          Get started by exploring your dashboard and discovering tailored job
+          matches, networking opportunities, and exclusive content.
+        </p>
+        <a href="http://localhost:3000" class="button">Start Now</a>
+
+        <p>
+          Or visit our official website for the latest updates and insights. 🌍
+        </p>
+        <p>Need help? Our support team is always here for you. 💚</p>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+          <a href="https://x.com/dealo" target="_blank">
+            <img
+              src="https://res.cloudinary.com/dajpllbyu/image/upload/v1739715230/bkgtlnga67ejvvg4i3s0.png"
+              alt="Twitter"
+            />
+          </a>
+          <a href="https://instagram.com/dealo" target="_blank">
+            <img
+              src="https://res.cloudinary.com/dajpllbyu/image/upload/v1739715232/grkddvrezsaolkhmgppv.png"
+              alt="Instagram"
+            />
+          </a>
+          <a href="https://linkedin.com/company/dealo" target="_blank">
+            <img
+              src="https://res.cloudinary.com/dajpllbyu/image/upload/v1739715230/ec4f4exc2wvwoccnkwbg.png"
+              alt="LinkedIn"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          <strong>Dealo Talent Network</strong><br />
+          23A, Bashorun Okusanya Street,<br />
+          Off Admiralty Road, Off Admiralty Way,<br />
+          Lekki Phase 1, Lagos<br />
+          <a href="mailto:support@dealo.com">support@dealo.com</a>
+        </p>
+        <p>© 2025 Dealo Talent Network. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>

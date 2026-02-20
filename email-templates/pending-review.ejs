@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificate Under Review - Dealo</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #ecfdf5;
+        padding: 40px;
+        color: #1e3a2d;
+        margin: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #047857;
+        padding: 24px;
+        text-align: center;
+      }
+      .header img {
+        max-width: 140px;
+      }
+      .content {
+        padding: 30px;
+        text-align: center;
+      }
+      h2 {
+        color: #065f46;
+        font-size: 22px;
+        margin-bottom: 16px;
+      }
+      p {
+        color: #064e3b;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .footer {
+        background-color: #f0fdf4;
+        padding: 20px;
+        text-align: center;
+        font-size: 13px;
+        color: #64748b;
+      }
+      .footer a {
+        color: #065f46;
+        text-decoration: none;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <img
+          src="https://pub-734ce1bac5434727ba9692dacb3d7441.r2.dev/logos/dealo-new.png"
+          alt="Dealo Logo"
+        />
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h2>Hi <%= firstName %>,</h2>
+        <p>
+          Thank you for uploading your certificate. Our team is currently
+          reviewing your submission to verify its authenticity.
+        </p>
+        <p>
+          This process usually takes between
+          <strong>2 to 5 business days</strong>. Once approved, your profile
+          will display a verified badge.
+        </p>
+        <p>
+          You’ll receive another email as soon as we complete the review. If you
+          have any questions, feel free to contact us at
+          <a href="mailto:support@dealo.com">support@dealo.com</a>.
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          <strong>Dealo Talent Network</strong><br />
+          23A, Bashorun Okusanya Street,<br />
+          Off Admiralty Road, Off Admiralty Way,<br />
+          Lekki Phase 1, Lagos<br />
+          <a href="mailto:support@dealo.com">support@dealo.com</a>
+        </p>
+        <p>© 2025 Dealo Talent Network. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>

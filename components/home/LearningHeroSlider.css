@@ -1,0 +1,86 @@
+/* Custom styles for Learning Hero Slider */
+.hero-slider .swiper_container {
+  height: 600px;
+  padding: 2rem 0;
+}
+
+.hero-slider .swiper-slide {
+  width: 400px !important;
+  height: 500px;
+  transition: all 0.3s ease;
+}
+
+.hero-slider .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  object-fit: cover;
+}
+
+.hero-slider .swiper-button-prev,
+.hero-slider .swiper-button-next {
+  color: rgb(74, 222, 128) !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.hero-slider .swiper-button-prev:hover,
+.hero-slider .swiper-button-next:hover {
+  background: rgba(74, 222, 128, 0.2);
+  transform: scale(1.1);
+}
+
+.hero-slider .swiper-button-prev::after,
+.hero-slider .swiper-button-next::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.hero-slider .swiper-pagination {
+  bottom: 20px !important;
+}
+
+.hero-slider .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  transition: all 0.3s ease;
+}
+
+.hero-slider .swiper-pagination-bullet-active {
+  background: rgb(74, 222, 128);
+  width: 24px;
+  border-radius: 6px;
+}
+
+/* Coverflow effect adjustments */
+.hero-slider .swiper-slide-shadow-left,
+.hero-slider .swiper-slide-shadow-right {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  ) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-slider .swiper_container {
+    height: 400px;
+  }
+
+  .hero-slider .swiper-slide {
+    width: 300px !important;
+    height: 350px;
+  }
+
+  .hero-slider .swiper-button-prev,
+  .hero-slider .swiper-button-next {
+    display: none;
+  }
+}
+
