@@ -15,6 +15,10 @@ const nextConfig = {
   // Compress output
   compress: true,
 
+  // Skip during next build to avoid OOM on Netlify; run lint/typecheck locally or in CI
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+
   // Enable SWC minification (faster and better)
   swcMinify: true,
 
