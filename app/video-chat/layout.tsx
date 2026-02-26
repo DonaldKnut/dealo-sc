@@ -1,10 +1,10 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import VideoChatSidebar from "./_components/VideoChatSidebar";
 import { usePathname } from "next/navigation";
 
-const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
+function VideoChatLayoutInner({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isRoom = pathname?.includes("/room/");
 
@@ -16,6 +16,24 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
       </div>
     </main>
   );
+}
+
+const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <main className="relative min-h-screen bg-gradient-to-br from-black via-[#0f1a0f] to-black">
+        <div className="ml-[72px] lg:ml-[240px] min-h-screen">{children}</div>
+      </main>
+    );
+  }
+
+  return <VideoChatLayoutInner>{children}</VideoChatLayoutInner>;
 };
 
 export default RootLayout;

@@ -10,6 +10,7 @@ import GlobalErrorHandler from "@/components/GlobalErrorHandler";
 import NotificationContainer from "@/components/ui/Notification";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ClientOnly from "@/components/ClientOnly";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -137,36 +138,38 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <GoogleAnalytics />
         <ErrorBoundary>
-          <GlobalErrorHandler />
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <AuthProvider>
-              <ConditionalLayout>{children}</ConditionalLayout>
-            </AuthProvider>
-          </ThemeProvider>
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: "#1a2e1a",
-                color: "#fff",
-                border: "1px solid #22c55e",
-              },
-              success: {
-                iconTheme: {
-                  primary: "#22c55e",
-                  secondary: "#fff",
+          <ClientOnly>
+            <GlobalErrorHandler />
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <AuthProvider>
+                <ConditionalLayout>{children}</ConditionalLayout>
+              </AuthProvider>
+            </ThemeProvider>
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: "#1a2e1a",
+                  color: "#fff",
+                  border: "1px solid #22c55e",
                 },
-              },
-              error: {
-                iconTheme: {
-                  primary: "#ef4444",
-                  secondary: "#fff",
+                success: {
+                  iconTheme: {
+                    primary: "#22c55e",
+                    secondary: "#fff",
+                  },
                 },
-              },
-            }}
-          />
-          <NotificationContainer />
+                error: {
+                  iconTheme: {
+                    primary: "#ef4444",
+                    secondary: "#fff",
+                  },
+                },
+              }}
+            />
+            <NotificationContainer />
+          </ClientOnly>
         </ErrorBoundary>
       </body>
     </html>

@@ -2,7 +2,6 @@
 
 import React, { Component, ErrorInfo, ReactNode } from "react";
 import { AlertTriangle, RefreshCw, Home } from "lucide-react";
-import Link from "next/link";
 
 interface Props {
   children: ReactNode;
@@ -94,13 +93,13 @@ class ErrorBoundary extends Component<Props, State> {
                 Try Again
               </button>
 
-              <Link
+              <a
                 href="/"
                 className="flex-1 flex items-center justify-center gap-2 bg-white/10 text-white px-4 py-3 rounded-lg hover:bg-white/20 transition-colors border border-white/20"
               >
                 <Home className="w-4 h-4" />
                 Go Home
-              </Link>
+              </a>
             </div>
 
             <div className="mt-6 pt-6 border-t border-white/20">

@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Ensure API key exists
-const apiKey: string | undefined = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-if (!apiKey) {
-  console.error("NEXT_PUBLIC_GEMINI_API_KEY is missing.");
-  throw new Error("NEXT_PUBLIC_GEMINI_API_KEY is missing.");
+function getGenAI(): GoogleGenerativeAI | null {
+  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+  if (!apiKey) {
+    console.error("NEXT_PUBLIC_GEMINI_API_KEY is missing.");
+    return null;
+  }
+  return new GoogleGenerativeAI(apiKey);
 }
-
-const genAI = new GoogleGenerativeAI(apiKey);
 
 // Define TypeScript types
 interface Course {
@@ -61,6 +61,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       - Key Takeaways:
       - Target Audience:
       - Content Suggestions:`;
+
+    const genAI = getGenAI();
+    if (!genAI) {
+      return NextResponse.json(
+        { error: "Gemini API is not configured. Set NEXT_PUBLIC_GEMINI_API_KEY." },
+        { status: 503 }
+      );
+    }
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 

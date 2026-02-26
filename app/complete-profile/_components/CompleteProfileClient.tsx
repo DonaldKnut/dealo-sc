@@ -22,13 +22,13 @@ export default function CompleteProfileClient() {
   if (status === "loading") {
     return (
       <div className="min-h-screen bg-black flex justify-center items-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-black to-black" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0f1a0f] to-black" />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           className="text-center relative z-10"
         >
-          <Loader2 className="w-16 h-16 animate-spin text-emerald-400 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(52,211,153,0.5)]" />
+          <Loader2 className="w-16 h-16 animate-spin text-green-400 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]" />
           <h2 className="text-3xl font-black text-white mb-2 tracking-tight">
             Syncing Environment
           </h2>
@@ -50,26 +50,27 @@ export default function CompleteProfileClient() {
   }
 
   return (
-    <div className="min-h-screen w-screen flex flex-col lg:flex-row overflow-hidden bg-[#020617] relative">
+    <div className="min-h-screen w-screen flex flex-col lg:flex-row overflow-hidden bg-gradient-to-br from-black via-[#0f1a0f] to-black relative">
       {/* Ambient background (behind both panels) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-green-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-3xl" />
       </div>
 
-      {/* Left: Fixed promo panel (fixed to screen, not scrollable) — same as auth */}
+      {/* Left: Fixed promo panel (fixed to screen, not scrollable) — theme aligned */}
       <div className="hidden lg:flex lg:w-[50vw] lg:flex-shrink-0 lg:flex-grow-0 relative z-10 h-screen overflow-hidden">
-        <div className="w-full h-full bg-black/50 backdrop-blur-3xl border-r border-white/5 flex flex-col p-12 xl:p-16">
+        <div className="w-full h-full bg-black/40 backdrop-blur-xl border-r border-white/10 flex flex-col p-12 xl:p-16">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/20">
               <Zap className="text-white fill-white w-6 h-6" />
             </div>
-            <span className="text-white font-black text-2xl tracking-tighter">
-              DEALO <span className="text-emerald-400">SC</span>
+            <span className="text-white font-bold text-xl tracking-tight">
+              Dealo
             </span>
           </motion.div>
 
@@ -82,7 +83,7 @@ export default function CompleteProfileClient() {
             >
               <h1 className="text-4xl xl:text-5xl 2xl:text-6xl font-black text-white leading-[1.1]">
                 Redefine Your <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-green-500">
                   Professional Edge
                 </span>
               </h1>
@@ -116,8 +117,8 @@ export default function CompleteProfileClient() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex gap-4 group">
-                  <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30 transition-all">
-                    <item.icon className="w-6 h-6 text-emerald-400" />
+                  <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition-all">
+                    <item.icon className="w-6 h-6 text-green-400" />
                   </div>
                   <div className="min-w-0">
                     <h4 className="text-white font-bold text-base xl:text-lg">
@@ -154,7 +155,7 @@ export default function CompleteProfileClient() {
               transition={{ delay: 0.2 }}
               className="mb-10"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold uppercase tracking-wider mb-4">
                 <Sparkles className="w-3.5 h-3.5" /> User Onboarding
               </div>
               <h2 className="text-3xl lg:text-4xl font-black text-white tracking-tight mb-2">
@@ -172,11 +173,11 @@ export default function CompleteProfileClient() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              className="mt-14 p-6 sm:p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl"
+              className="mt-14 p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl"
             >
               <div className="flex flex-col sm:flex-row items-center gap-6">
-                <div className="w-14 h-14 bg-emerald-500/20 rounded-2xl flex items-center justify-center flex-shrink-0 border border-emerald-500/30">
-                  <Globe className="w-7 h-7 text-emerald-400" />
+                <div className="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center flex-shrink-0 border border-green-500/30">
+                  <Globe className="w-7 h-7 text-green-400" />
                 </div>
                 <div className="flex-1 text-center sm:text-left min-w-0">
                   <h4 className="text-lg font-bold text-white mb-1">
@@ -184,7 +185,7 @@ export default function CompleteProfileClient() {
                   </h4>
                   <p className="text-gray-400 text-sm">
                     By completing this setup, you join a network of over{" "}
-                    <span className="text-emerald-400 font-semibold">
+                    <span className="text-green-400 font-semibold">
                       15,000+
                     </span>{" "}
                     industry leaders.

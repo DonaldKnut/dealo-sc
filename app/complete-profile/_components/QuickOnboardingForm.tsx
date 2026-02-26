@@ -15,14 +15,7 @@ import {
   ArrowRight,
   ArrowLeft,
   Sparkles,
-  Target,
   Zap,
-  CheckCircle,
-  Rocket,
-  BookOpen,
-  GraduationCap,
-  Building2,
-  Search,
   ShieldCheck,
 } from "lucide-react";
 import { ButtonLoader } from "@/components/ui/Loader";
@@ -43,7 +36,9 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(1);
   const [showInterestsDropdown, setShowInterestsDropdown] = useState(false);
+  const [showRoleDropdown, setShowRoleDropdown] = useState(false);
   const interestsDropdownRef = useRef<HTMLDivElement>(null);
+  const roleDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,6 +47,12 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
         !interestsDropdownRef.current.contains(event.target as Node)
       ) {
         setShowInterestsDropdown(false);
+      }
+      if (
+        roleDropdownRef.current &&
+        !roleDropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowRoleDropdown(false);
       }
     };
 
@@ -130,39 +131,16 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
   };
 
   const roleOptions = [
-    {
-      value: "FREELANCER",
-      label: "Freelancer",
-      description: "Offer your skills and services to clients worldwide",
-      icon: Rocket,
-      gradient: "from-emerald-400 to-green-600",
-    },
-    {
-      value: "STUDENT",
-      label: "Student",
-      description: "Learn high-demand skills and grow your career",
-      icon: BookOpen,
-      gradient: "from-green-400 to-teal-600",
-    },
-    {
-      value: "INSTRUCTOR",
-      label: "Instructor",
-      description: "Share your knowledge and mentor the community",
-      icon: GraduationCap,
-      gradient: "from-emerald-500 to-green-700",
-    },
-    {
-      value: "COMPANY",
-      label: "Company",
-      description: "Post projects and find top-tier talent fast",
-      icon: Building2,
-      gradient: "from-teal-500 to-emerald-700",
-    },
+    { value: "FREELANCER", label: "Freelancer" },
+    { value: "STUDENT", label: "Student" },
+    { value: "INSTRUCTOR", label: "Instructor" },
+    { value: "COMPANY", label: "Company" },
+    { value: "JOB_SEEKER", label: "Job Seeker" },
   ];
 
   const handleNextStep = async () => {
     const fieldsToValidate: (keyof QuickOnboardingFormType)[] =
-      step === 1 ? ["firstName", "lastName", "phone", "dateOfBirth"] : ["role"];
+      step === 1 ? ["firstName", "lastName", "phone", "dateOfBirth", "role"] : [];
 
     const isValidStep = await trigger(fieldsToValidate);
     if (isValidStep) {
@@ -195,8 +173,8 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
   return (
     <div className="w-full relative">
       {/* Premium Backdrop Glow */}
-      <div className="absolute -top-40 -left-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-40 -right-20 w-80 h-80 bg-green-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -top-40 -left-20 w-80 h-80 bg-green-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-40 -right-20 w-80 h-80 bg-green-400/10 rounded-full blur-[100px] pointer-events-none" />
 
       <motion.div
         variants={containerVariants}
@@ -209,13 +187,13 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
           <div className="flex justify-between items-end mb-4">
             <div>
               <h3 className="text-white font-bold text-lg flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                <ShieldCheck className="w-5 h-5 text-green-400" />
                 Onboarding Progress
               </h3>
               <p className="text-gray-400 text-sm">Fine-tuning your workspace experience</p>
             </div>
             <div className="text-right">
-              <span className="text-emerald-400 font-mono text-xl font-bold">{step === 1 ? '50%' : '100%'}</span>
+              <span className="text-green-400 font-mono text-xl font-bold">{step === 1 ? '50%' : '100%'}</span>
               <p className="text-gray-500 text-xs uppercase tracking-widest">Complete</p>
             </div>
           </div>
@@ -223,7 +201,7 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
             <motion.div
               initial={{ width: "0%" }}
               animate={{ width: step === 1 ? "50%" : "100%" }}
-              className="h-full bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 shadow-[0_0_20px_rgba(52,211,153,0.3)]"
+              className="h-full bg-gradient-to-r from-green-400 via-emerald-500 to-green-600 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
               transition={{ duration: 1, ease: "circOut" }}
             />
           </div>
@@ -241,19 +219,77 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                   exit={{ opacity: 0, x: -20 }}
                   className="space-y-8"
                 >
+                  {/* Role - first input user fills */}
+                  <motion.div variants={itemVariants} className="space-y-3 relative" ref={roleDropdownRef}>
+                    <label className="text-white text-sm font-medium ml-1 flex items-center gap-2">
+                      <Briefcase className="h-4 w-4 text-green-400" />
+                      Select Your Role <span className="text-green-400 font-mono text-xs opacity-50">• Required</span>
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setShowRoleDropdown(!showRoleDropdown)}
+                      className="w-full flex items-center justify-between px-6 py-5 bg-white/5 border border-white/10 rounded-2xl text-white group hover:bg-white/10 transition-all focus:ring-2 focus:ring-green-500/50 focus:border-green-500 text-left"
+                    >
+                      <div className="flex items-center gap-3">
+                        <Briefcase className="w-5 h-5 text-green-400" />
+                        <span className={watchedRole ? "text-white font-medium" : "text-gray-500"}>
+                          {watchedRole ? roleOptions.find((r) => r.value === watchedRole)?.label : "Choose your primary role..."}
+                        </span>
+                      </div>
+                      <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${showRoleDropdown ? "rotate-180" : ""}`} />
+                    </button>
+
+                    <AnimatePresence>
+                      {showRoleDropdown && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute top-full mt-2 left-0 right-0 w-full bg-gray-900 border border-white/20 rounded-2xl p-2 shadow-2xl z-[100]"
+                        >
+                          {roleOptions.map((opt) => (
+                            <button
+                              key={opt.value}
+                              type="button"
+                              onClick={() => {
+                                handleRoleSelect(opt.value);
+                                setShowRoleDropdown(false);
+                              }}
+                              className={`w-full px-5 py-3.5 text-left text-sm rounded-xl transition-all font-medium ${
+                                watchedRole === opt.value
+                                  ? "bg-green-500/20 text-green-400 border border-green-500/30"
+                                  : "text-gray-300 hover:bg-green-500/10 hover:text-white"
+                              }`}
+                            >
+                              {opt.label}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <input type="hidden" {...register("role")} />
+
+                    {errors.role && (
+                      <p className="text-red-400 text-xs mt-1 ml-1">
+                        {errors.role.message || "Please select a role to continue."}
+                      </p>
+                    )}
+                  </motion.div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* First Name */}
                     <motion.div variants={itemVariants} className="space-y-3">
                       <label className="text-white text-sm font-medium ml-1 flex items-center gap-2">
-                        First Name <span className="text-emerald-400 font-mono text-xs opacity-50">• Required</span>
+                        First Name <span className="text-green-400 font-mono text-xs opacity-50">• Required</span>
                       </label>
                       <div className="relative group">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <User className="h-5 w-5 text-gray-500 group-focus-within:text-emerald-400 transition-colors" />
+                          <User className="h-5 w-5 text-gray-500 group-focus-within:text-green-400 transition-colors" />
                         </div>
                         <input
                           {...register("firstName")}
-                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all hover:bg-white/[0.07]"
+                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition-all hover:bg-white/[0.07]"
                           placeholder="Your first name"
                         />
                       </div>
@@ -265,11 +301,11 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                       <label className="text-white text-sm font-medium ml-1">Last Name</label>
                       <div className="relative group">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <User className="h-5 w-5 text-gray-500 group-focus-within:text-emerald-400 transition-colors" />
+                          <User className="h-5 w-5 text-gray-500 group-focus-within:text-green-400 transition-colors" />
                         </div>
                         <input
                           {...register("lastName")}
-                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all hover:bg-white/[0.07]"
+                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition-all hover:bg-white/[0.07]"
                           placeholder="Your last name"
                         />
                       </div>
@@ -281,11 +317,11 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                       <label className="text-white text-sm font-medium ml-1">Phone Number</label>
                       <div className="relative group">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Phone className="h-5 w-5 text-gray-500 group-focus-within:text-emerald-400 transition-colors" />
+                          <Phone className="h-5 w-5 text-gray-500 group-focus-within:text-green-400 transition-colors" />
                         </div>
                         <input
                           {...register("phone")}
-                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all hover:bg-white/[0.07]"
+                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition-all hover:bg-white/[0.07]"
                           placeholder="+1 (555) 000-0000"
                         />
                       </div>
@@ -297,12 +333,12 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                       <label className="text-white text-sm font-medium ml-1">Date of Birth</label>
                       <div className="relative group">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Calendar className="h-5 w-5 text-gray-500 group-focus-within:text-emerald-400 transition-colors" />
+                          <Calendar className="h-5 w-5 text-gray-500 group-focus-within:text-green-400 transition-colors" />
                         </div>
                         <input
                           {...register("dateOfBirth")}
                           type="date"
-                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all hover:bg-white/[0.07]"
+                          className="block w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500 transition-all hover:bg-white/[0.07]"
                         />
                       </div>
                       {errors.dateOfBirth && <p className="text-red-400 text-xs mt-1 ml-1">{errors.dateOfBirth.message}</p>}
@@ -315,7 +351,7 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                       whileTap={{ scale: 0.98 }}
                       type="button"
                       onClick={handleNextStep}
-                      className="px-10 py-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold rounded-[1.25rem] shadow-xl shadow-emerald-500/20 flex items-center gap-3 group transition-all hover:shadow-emerald-500/40"
+                      className="px-10 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-[1.25rem] shadow-xl shadow-green-500/20 flex items-center gap-3 group transition-all hover:shadow-green-500/40"
                     >
                       Continue
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -328,56 +364,19 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  className="space-y-10"
+                  transition={{ duration: 0.4 }}
+                  className="space-y-8"
                 >
-                  {/* Hidden field to register role with react-hook-form */}
-                  <input type="hidden" {...register("role")} />
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
-                    {roleOptions.map((role, idx) => (
-                      <motion.div
-                        key={role.value}
-                        variants={itemVariants}
-                        onClick={() => handleRoleSelect(role.value)}
-                        className={`relative p-6 rounded-[2rem] border-2 cursor-pointer transition-all ${watchedRole === role.value
-                            ? "bg-emerald-500/10 border-emerald-500 ring-4 ring-emerald-500/20"
-                            : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/10"
-                          }`}
-                      >
-                        <div className="flex items-start gap-5">
-                          <div className={`p-4 rounded-2xl bg-gradient-to-br ${role.gradient} shadow-lg shadow-emerald-500/20`}>
-                            <role.icon className="w-8 h-8 text-white" />
-                          </div>
-                          <div className="pr-8">
-                            <h4 className="text-white font-bold text-xl mb-1">{role.label}</h4>
-                            <p className="text-gray-400 text-sm leading-relaxed">{role.description}</p>
-                          </div>
-                          {watchedRole === role.value && (
-                            <div className="absolute top-6 right-6">
-                              <CheckCircle className="w-6 h-6 text-emerald-400" />
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {errors.role && (
-                    <p className="text-red-400 text-xs mt-2 ml-1">
-                      {errors.role.message || "Please select a role to continue."}
-                    </p>
-                  )}
-
-                  {/* Interests Dropdown */}
+                  {/* Step 2: Interests only (Role is now in step 1) */}
                   <div className="space-y-4 relative" ref={interestsDropdownRef}>
                     <label className="text-white text-sm font-medium ml-1">Primary Skill / Interest</label>
                     <button
                       type="button"
                       onClick={() => setShowInterestsDropdown(!showInterestsDropdown)}
-                      className="w-full flex items-center justify-between px-6 py-5 bg-white/5 border border-white/10 rounded-2xl text-white group hover:bg-white/10 transition-all focus:ring-2 focus:ring-emerald-500/50"
+                      className="w-full flex items-center justify-between px-6 py-5 bg-white/5 border border-white/10 rounded-2xl text-white group hover:bg-white/10 transition-all focus:ring-2 focus:ring-green-500/50"
                     >
                       <div className="flex items-center gap-3">
-                        <Sparkles className="w-5 h-5 text-emerald-400" />
+                        <Sparkles className="w-5 h-5 text-green-400" />
                         <span className={watchedInterests ? "text-white" : "text-gray-500 font-medium"}>
                           {watchedInterests || "Select your main expertise area"}
                         </span>
@@ -402,7 +401,7 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                                   setValue("interests", option);
                                   setShowInterestsDropdown(false);
                                 }}
-                                className="px-5 py-3 text-left text-sm text-gray-300 hover:bg-emerald-500 hover:text-white rounded-xl transition-all font-medium"
+                                className="px-5 py-3 text-left text-sm text-gray-300 hover:bg-green-500 hover:text-white rounded-xl transition-all font-medium"
                               >
                                 {option}
                               </button>
@@ -427,7 +426,7 @@ export default function QuickOnboardingForm({ session }: { session: any }) {
                       whileTap={{ scale: 0.98 }}
                       type="submit"
                       disabled={isLoading}
-                      className="flex-1 max-w-sm px-10 py-5 bg-gradient-to-r from-emerald-400 via-green-500 to-emerald-600 text-white font-black text-lg uppercase tracking-wider rounded-[1.25rem] shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-3 hover:shadow-emerald-500/40 relative overflow-hidden group disabled:opacity-50"
+                      className="flex-1 max-w-sm px-10 py-5 bg-gradient-to-r from-green-400 via-emerald-500 to-green-600 text-white font-black text-lg uppercase tracking-wider rounded-[1.25rem] shadow-xl shadow-green-500/20 flex items-center justify-center gap-3 hover:shadow-green-500/40 relative overflow-hidden group disabled:opacity-50"
                     >
                       <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 pointer-events-none" />
                       {isLoading ? <ButtonLoader text="Initializing Workspace..." /> : (

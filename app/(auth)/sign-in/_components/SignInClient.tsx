@@ -6,8 +6,24 @@ import ModernAuthForm from "./ModernAuthForm";
 import PromotionalPanel from "./PromotionalPanel";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { useRouter } from "next/navigation";
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
+
+// If user is already signed in, redirect to dashboard or complete-profile (client-side so page always loads first).
+function SignedInRedirectGuard() {
+  const router = useRouter();
+  const { data: sessionData, status } = useSession();
+
+  useEffect(() => {
+    if (status === "loading") return;
+    if (!sessionData?.user) return;
+    router.replace(
+      sessionData.user.isProfileComplete ? "/dealoforge/dashboard" : "/complete-profile"
+    );
+  }, [router, sessionData?.user, status]);
+
+  return null;
+}
 
 // Component that uses search params - wrapped in Suspense
 const SearchParamsHandler = () => {
@@ -111,6 +127,7 @@ const SignInPageContent = () => {
                 </div>
               }
             >
+              <SignedInRedirectGuard />
               <OAuthSuccessHandler />
               <SearchParamsHandler />
             </Suspense>

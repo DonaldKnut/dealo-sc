@@ -153,17 +153,22 @@ const ForgotPasswordForm: React.FC = () => {
       className="w-full"
     >
       {/* Header */}
-      <motion.div variants={itemVariants} className="text-center mb-8">
+      <motion.div
+        variants={itemVariants}
+        className="text-center mb-10"
+      >
         <motion.div
           variants={iconVariants}
-          className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-6 shadow-2xl overflow-hidden"
+          className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 rounded-2xl mb-8 shadow-[0_10px_30px_rgba(34,197,94,0.3)] relative group overflow-hidden"
         >
-          <Shield className="w-10 h-10 text-white" />
+          <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <Shield className="w-10 h-10 text-white relative z-10" />
         </motion.div>
-        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-green-400 mb-3">
+
+        <h1 className="text-4xl sm:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-500 mb-4 tracking-tight leading-tight">
           {isResetStep ? "Reset Password" : "Forgot Password?"}
         </h1>
-        <p className="text-gray-200 text-lg">
+        <p className="text-gray-200 text-lg font-body opacity-80 leading-relaxed max-w-sm mx-auto">
           {isResetStep
             ? "Create a new secure password for your account"
             : "Enter your email to receive a password reset link"}
@@ -198,23 +203,28 @@ const ForgotPasswordForm: React.FC = () => {
                 }
               />
 
-              <Button
+              <motion.button
+                whileHover={{ scale: 1.01, translateY: -2 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full relative group bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 text-white py-5 px-6 rounded-2xl font-bold transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.4)] overflow-hidden"
               >
+                {/* Button Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    Sending Reset Link...
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span className="uppercase tracking-widest text-xs">Sending...</span>
                   </>
                 ) : (
                   <>
-                    Send Reset Link
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    <span className="uppercase tracking-widest text-xs">Send Reset Link</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
-              </Button>
+              </motion.button>
             </motion.form>
           ) : (
             <motion.form
@@ -255,35 +265,39 @@ const ForgotPasswordForm: React.FC = () => {
                 }
               />
 
-              <Button
+              <motion.button
+                whileHover={{ scale: 1.01, translateY: -2 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full relative group bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 text-white py-5 px-6 rounded-2xl font-bold transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.4)] overflow-hidden"
               >
+                {/* Button Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                    Resetting Password...
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span className="uppercase tracking-widest text-xs">Resetting...</span>
                   </>
                 ) : (
                   <>
-                    Reset Password
-                    <CheckCircle className="w-4 h-4 ml-2" />
+                    <span className="uppercase tracking-widest text-xs">Reset Password</span>
+                    <CheckCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   </>
                 )}
-              </Button>
+              </motion.button>
             </motion.form>
           )}
         </AnimatePresence>
       </motion.div>
 
-      {/* Footer */}
-      <motion.div variants={itemVariants} className="text-center mt-6">
-        <p className="text-gray-400 text-sm">
+      <motion.div variants={itemVariants} className="text-center mt-10">
+        <p className="text-gray-400 text-sm font-body">
           Remember your password?{" "}
           <Link
             href="/sign-in"
-            className="text-green-400 hover:text-green-300 font-medium transition-colors"
+            className="text-green-400 hover:text-green-300 font-semibold transition-all hover:underline underline-offset-4"
           >
             Sign in here
           </Link>

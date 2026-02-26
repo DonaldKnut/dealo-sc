@@ -11,13 +11,14 @@ import {
   Mail,
   Loader2,
   ArrowRight,
-  Shield,
   Sparkles,
+  ArrowLeft,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNotification } from "@/components/ui/Notification";
+import PromotionalPanel from "../../(auth)/sign-in/_components/PromotionalPanel";
 import {
   Tooltip,
   TooltipContent,
@@ -195,126 +196,21 @@ const ModernVerifyEmailForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-[#0f1a0f] to-black flex overflow-hidden relative">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div
-          className="absolute bottom-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "4s" }}
-        ></div>
+    <div className="min-h-screen w-screen flex flex-col lg:flex-row overflow-hidden bg-gradient-to-br from-black via-[#0f1a0f] to-black relative">
+      {/* Background Glow Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Left Side - Fixed Promotional Panel */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-black/80 via-[#0f1a0f]/90 to-black/80 backdrop-blur-xl p-8 text-white border-r border-white/10 h-screen z-10">
-        <div className="max-w-lg w-full flex flex-col justify-center overflow-hidden">
-          {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mb-6"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-1.5">
-                <Mail className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-                  Email Verification
-                </h1>
-                <p className="text-xs text-gray-400 font-medium">
-                  Secure Account Activation
-                </p>
-              </div>
-            </div>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Complete your account setup by verifying your email address. This
-              ensures your account security and enables all platform features.
-            </p>
-          </motion.div>
-
-          {/* Features Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="grid grid-cols-1 gap-3 mb-6"
-          >
-            <div className="p-3 bg-gradient-to-br from-green-500/10 to-green-600/5 backdrop-blur-xl rounded-lg border border-green-500/20">
-              <div className="flex items-center gap-3">
-                <Shield className="w-5 h-5 text-green-400" />
-                <div>
-                  <h3 className="text-sm font-semibold text-white">
-                    Account Security
-                  </h3>
-                  <p className="text-xs text-gray-400">
-                    Protect your account with verified email
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="p-3 bg-gradient-to-br from-blue-500/10 to-blue-600/5 backdrop-blur-xl rounded-lg border border-blue-500/20">
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-400" />
-                <div>
-                  <h3 className="text-sm font-semibold text-white">
-                    Full Access
-                  </h3>
-                  <p className="text-xs text-gray-400">
-                    Unlock all platform features
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="p-3 bg-gradient-to-br from-purple-500/10 to-purple-600/5 backdrop-blur-xl rounded-lg border border-purple-500/20">
-              <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-purple-400" />
-                <div>
-                  <h3 className="text-sm font-semibold text-white">
-                    Premium Features
-                  </h3>
-                  <p className="text-xs text-gray-400">
-                    Access advanced tools and resources
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Glassmorphism Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-            className="mb-4"
-          >
-            <div className="p-4 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-xl border border-white/20 shadow-2xl">
-              <div className="flex items-center space-x-3 mb-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-600 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <span className="text-white font-semibold text-xs">
-                    Verification Process
-                  </span>
-                  <p className="text-gray-300 text-xs leading-relaxed mt-1">
-                    Quick and secure email verification to get you started on
-                    Dealo.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+      {/* Left Side - Promotional Panel */}
+      <div className="hidden lg:flex lg:w-[50vw] lg:flex-shrink-0 lg:flex-grow-0 relative z-10 h-screen overflow-hidden">
+        <PromotionalPanel />
       </div>
 
-      {/* Right Side - Scrollable Verification Form */}
-      <div className="w-full lg:w-1/2 flex items-start justify-center p-8 relative z-10 h-screen overflow-y-auto">
+      {/* Right Side - Verification Case */}
+      <div className="w-full lg:w-[50vw] lg:flex-shrink-0 lg:flex-grow-0 h-screen overflow-y-auto relative z-10 flex items-start justify-center pt-8 sm:pt-12 lg:pt-16 pb-8 px-6 sm:px-8 lg:px-12">
         <div className="w-full max-w-md py-8">
           <motion.div
             variants={containerVariants}
@@ -335,21 +231,25 @@ const ModernVerifyEmailForm = () => {
                   height={48}
                 />
               </motion.div>
-              <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-green-400 mb-3">
+              <h1 className="text-4xl sm:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-500 mb-4 tracking-tight">
                 Email Verification
               </h1>
-              <p className="text-gray-200 text-lg">
+              <p className="text-gray-200 text-lg font-body opacity-80 leading-relaxed">
                 {status === "pending"
-                  ? "Check your inbox for verification link"
-                  : "We're verifying your email address"}
+                  ? "Check your inbox for the verification code"
+                  : status === "loading"
+                    ? "Securing your account access..."
+                    : "Complete your activation"}
               </p>
             </motion.div>
 
-            {/* Main Content Card */}
+            {/* Main Content Card - Premium Glassmorphism */}
             <motion.div
               variants={itemVariants}
-              className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl"
+              className="bg-[#0a0f1a]/40 backdrop-blur-2xl rounded-3xl p-8 sm:p-10 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group"
             >
+              {/* Subtle Decorative Glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-green-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <AnimatePresence mode="wait">
                 {status === "loading" && (
                   <motion.div
@@ -412,10 +312,14 @@ const ModernVerifyEmailForm = () => {
                       transition={{ delay: 0.4 }}
                     >
                       <Link href="/sign-in">
-                        <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105">
-                          Go to Sign In
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-[0_10px_30px_rgba(34,197,94,0.3)] flex items-center justify-center gap-2 group"
+                        >
+                          <span className="uppercase tracking-widest text-xs">Go to Sign In</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </motion.button>
                       </Link>
                     </motion.div>
                   </motion.div>
@@ -454,27 +358,31 @@ const ModernVerifyEmailForm = () => {
                         placeholder="Enter your email"
                         value={resendEmail}
                         onChange={(e) => setResendEmail(e.target.value)}
-                        className="w-full bg-white/10 border-white/20 text-white placeholder-gray-400"
+                        className="w-full bg-white/5 border-white/10 text-white placeholder-gray-500 h-12 rounded-xl focus:ring-green-500/20 focus:border-green-500/40"
                       />
-                      <Button
+                      <motion.button
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         onClick={resendVerification}
                         disabled={!canResend || resendLoading || !resendEmail}
-                        className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        className="w-full bg-white/10 hover:bg-white/15 text-white py-4 rounded-xl font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 border border-white/10"
                       >
                         {resendLoading ? (
                           <>
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                            Sending...
+                            <Loader2 className="w-4 h-4 animate-spin text-green-400" />
+                            <span className="uppercase tracking-widest text-xs">Sending...</span>
                           </>
                         ) : (
                           <>
-                            <RefreshCw className="w-4 h-4" />
-                            {canResend
-                              ? "Resend Verification Email"
-                              : `Wait ${countdown}s to resend`}
+                            <RefreshCw className={`w-4 h-4 ${canResend ? 'text-green-400' : 'text-gray-400'}`} />
+                            <span className="uppercase tracking-widest text-xs">
+                              {canResend
+                                ? "Resend Activation Email"
+                                : `Resend in ${countdown}s`}
+                            </span>
                           </>
                         )}
-                      </Button>
+                      </motion.button>
                     </div>
                   </motion.div>
                 )}
@@ -506,19 +414,24 @@ const ModernVerifyEmailForm = () => {
                       Invalid verification link. Please check your email or
                       request a new verification link.
                     </p>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <Link href="/sign-in">
-                        <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 rounded-lg font-medium transition-all duration-300">
+                        <motion.button
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
+                          className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all duration-300 shadow-lg"
+                        >
                           Go to Sign In
-                        </Button>
+                        </motion.button>
                       </Link>
-                      <Button
+                      <motion.button
+                        whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         onClick={() => setStatus("pending")}
-                        variant="outline"
-                        className="w-full border-white/20 text-white hover:bg-white/10 py-3 rounded-lg font-medium transition-all duration-300"
+                        className="w-full bg-white/5 border border-white/10 text-white hover:bg-white/10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all duration-300"
                       >
                         Try Again
-                      </Button>
+                      </motion.button>
                     </div>
                   </motion.div>
                 )}
@@ -554,30 +467,33 @@ const ModernVerifyEmailForm = () => {
                       your account.
                     </p>
                     <div className="space-y-4">
-                      {/* Verification Code Input */}
-                      <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                        <p className="text-sm text-gray-300 mb-3">
-                          Enter the verification code from your email:
+                      {/* Verification Code Input - Premium Redesign */}
+                      <div className="bg-white/5 rounded-2xl p-6 border border-white/10 shadow-inner">
+                        <p className="text-sm font-body text-gray-400 mb-4 font-medium italic tracking-wide">
+                          Enter the 6-digit code sent to your email
                         </p>
-                        <div className="space-y-3">
-                          <Input
-                            type="text"
-                            placeholder="Enter verification code"
-                            value={verificationCode}
-                            onChange={(e) =>
-                              setVerificationCode(e.target.value)
-                            }
-                            className="w-full bg-white/10 border-white/20 text-white placeholder-gray-400 text-center text-lg font-mono tracking-widest"
-                            maxLength={6}
-                          />
-                          <Button
+                        <div className="space-y-4">
+                          <div className="relative group">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-green-600/20 rounded-xl blur opacity-0 group-focus-within:opacity-100 transition-opacity duration-500"></div>
+                            <input
+                              type="text"
+                              placeholder="000000"
+                              value={verificationCode}
+                              onChange={(e) => setVerificationCode(e.target.value)}
+                              className="relative w-full bg-[#0a0f1a]/60 border border-white/10 text-white placeholder-gray-600 text-center text-3xl font-heading font-bold tracking-[0.5em] py-5 rounded-xl focus:outline-none focus:border-green-500/50 transition-all"
+                              maxLength={6}
+                            />
+                          </div>
+                          <motion.button
+                            whileHover={{ scale: 1.01, translateY: -1 }}
+                            whileTap={{ scale: 0.99 }}
                             onClick={verifyEmail}
-                            disabled={!verificationCode.trim()}
-                            className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            disabled={!verificationCode.trim() || status === "loading"}
+                            className="w-full bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 text-white py-4.5 rounded-xl font-bold uppercase tracking-widest text-xs transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-[0_10px_20px_rgba(34,197,94,0.2)]"
                           >
                             <CheckCircle className="w-4 h-4" />
-                            Verify Email
-                          </Button>
+                            Verify Activation
+                          </motion.button>
                         </div>
                       </div>
 
@@ -597,27 +513,31 @@ const ModernVerifyEmailForm = () => {
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger asChild>
-                                <Button
+                                <motion.button
+                                  whileHover={{ scale: 1.01 }}
+                                  whileTap={{ scale: 0.99 }}
                                   onClick={resendVerification}
                                   disabled={
                                     !canResend || resendLoading || !resendEmail
                                   }
-                                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                  className="w-full bg-white/5 border border-white/10 text-white hover:bg-white/10 py-4 rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                                 >
                                   {resendLoading ? (
                                     <>
-                                      <Loader2 className="w-4 h-4 animate-spin" />
-                                      Sending...
+                                      <Loader2 className="w-4 h-4 animate-spin text-green-400" />
+                                      <span className="uppercase tracking-widest text-xs">Sending...</span>
                                     </>
                                   ) : (
                                     <>
-                                      <RefreshCw className="w-4 h-4" />
-                                      {canResend
-                                        ? "Resend Verification Email"
-                                        : `Wait ${countdown}s to resend`}
+                                      <RefreshCw className={`w-4 h-4 ${canResend ? 'text-green-400' : 'text-gray-400'}`} />
+                                      <span className="uppercase tracking-widest text-xs">
+                                        {canResend
+                                          ? "Resend Email"
+                                          : `Wait ${countdown}s`}
+                                      </span>
                                     </>
                                   )}
-                                </Button>
+                                </motion.button>
                               </TooltipTrigger>
                               <TooltipContent side="top" className="max-w-xs">
                                 {lastResendResponse ||
@@ -629,12 +549,14 @@ const ModernVerifyEmailForm = () => {
                       </div>
 
                       <Link href="/sign-in">
-                        <Button
-                          variant="outline"
-                          className="w-full border-white/20 text-white hover:bg-white/10 py-3 rounded-lg font-medium transition-all duration-300"
+                        <motion.button
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
+                          className="w-full flex items-center justify-center gap-2 text-gray-400 hover:text-white transition-colors py-4 font-medium text-sm group"
                         >
+                          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                           Back to Sign In
-                        </Button>
+                        </motion.button>
                       </Link>
                     </div>
                   </motion.div>

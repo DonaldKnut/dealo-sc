@@ -327,6 +327,7 @@ const ModernAuthForm = ({
           });
           if (checkRes.ok) {
             const checkData = await checkRes.json();
+
             if (!checkData.exists) {
               addNotification({
                 title: "No Account",
@@ -347,6 +348,16 @@ const ModernAuthForm = ({
               } catch { }
               return; // Stop proceeding to signIn
             }
+
+            if (checkData.degraded) {
+              addNotification({
+                title: "Service Under Maintenance",
+                message: "Our authentication database is currently undergoing maintenance. Please try again in a few minutes.",
+                type: "error",
+              });
+              return;
+            }
+
             if (checkData.exists && checkData.isEmailVerified === false) {
               addNotification({
                 title: "Email Not Verified",
@@ -366,7 +377,7 @@ const ModernAuthForm = ({
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ email: formData.email }),
                 });
-              } catch {}
+              } catch { }
               const params = new URLSearchParams(window.location.search);
               params.set("email", formData.email);
               router.push(`/verify-email-new?${params.toString()}`);
@@ -419,13 +430,13 @@ const ModernAuthForm = ({
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-8"
+        transition={{ duration: 0.8 }}
+        className="text-center mb-10"
       >
-        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-green-400 mb-3">
+        <h1 className="text-4xl sm:text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-green-400 to-green-500 mb-4 tracking-tight leading-tight">
           {isSignUp ? "Create Your Account" : "Welcome Back"}
         </h1>
-        <p className="text-gray-200 text-lg">
+        <p className="text-gray-200 text-lg font-body opacity-80 leading-relaxed max-w-sm mx-auto">
           {isSignUp
             ? "Join thousands of professionals learning and growing together"
             : "Sign in to continue your learning journey"}
@@ -436,8 +447,8 @@ const ModernAuthForm = ({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="space-y-3 mb-6"
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="space-y-4 mb-8"
       >
         <button
           type="button"
@@ -447,14 +458,17 @@ const ModernAuthForm = ({
             isGoogleLoading ||
             !authAvailable
           }
-          className="w-full flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm text-white py-4 px-4 rounded-xl font-medium hover:bg-white/20 transition-all duration-300 disabled:opacity-50 hover:scale-[1.02] shadow-lg"
+          className="w-full relative group flex items-center justify-center gap-4 bg-white/5 backdrop-blur-md text-white py-4.5 px-6 rounded-2xl font-semibold border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden shadow-2xl"
         >
+          {/* Subtle Hover Glow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
           {isGoogleLoading ? (
-            <Loader2 className="w-5 h-5 animate-spin" />
+            <Loader2 className="w-5 h-5 animate-spin text-green-400" />
           ) : (
-            <SiGoogle className="text-xl" />
+            <SiGoogle className="text-2xl text-green-400 group-hover:scale-110 transition-transform duration-300" />
           )}
-          Continue with Google
+          <span className="relative z-10 tracking-wide uppercase text-xs">Continue with Google</span>
         </button>
       </motion.div>
 
@@ -609,27 +623,32 @@ const ModernAuthForm = ({
           </div>
         )}
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.01, translateY: -2 }}
+          whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={
             isFormLoading ||
             isGoogleLoading ||
             !authAvailable
           }
-          className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 px-4 rounded-xl font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:scale-[1.02]"
+          className="w-full relative group bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 text-white py-5 px-6 rounded-2xl font-bold transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_40px_rgba(34,197,94,0.4)] overflow-hidden"
         >
+          {/* Button Shine Effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
           {isFormLoading ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />
-              {isSignUp ? "Creating Account..." : "Signing In..."}
+              <span className="uppercase tracking-widest text-xs">{isSignUp ? "Creating Account..." : "Signing In..."}</span>
             </>
           ) : (
             <>
-              {isSignUp ? "Create Account" : "Sign In"}
-              <ArrowRight className="w-5 h-5" />
+              <span className="uppercase tracking-widest text-xs">{isSignUp ? "Create Account" : "Sign In"}</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </>
           )}
-        </button>
+        </motion.button>
       </motion.form>
 
       {/* Toggle Sign In/Sign Up */}
